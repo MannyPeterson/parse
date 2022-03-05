@@ -95,7 +95,9 @@ void parse(const char *str, char **args, int *argc)
             {
                 *argc += 1;
                 pos = 0;
-                // printf("%c token = %d, literal = %d, argc = %d, pos = %d\n", ch, intoken, inliteral, *argc, pos);
+                *(args[*argc] + pos) = ch;
+                pos += 1;
+                //printf("%c token = %d, literal = %d, argc = %d, pos = %d\n", ch, intoken, inliteral, *argc, pos);
             }
             intoken = true;
         }
@@ -111,10 +113,9 @@ int main(void)
     int argc;
     char **args;
 
-
     args = init();
 
-    parse("load    \"8/8/8/4p1K1/2k1P3/8/8/8 b - - 0 1\"  \"fred stacy bob\"", args, &argc);
+    parse("load   ding    dong", args, &argc);
 
     for (int b = 0; b < argc; b++)
     {
